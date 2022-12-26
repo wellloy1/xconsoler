@@ -11,7 +11,7 @@ Only `sonic-boom` (Pino logger uses this)
 # Usage
 
 ```bash
-npm i consoler-js
+npm i xconsoler
 ```
 
 ## Example
