@@ -17,7 +17,7 @@ npm i xconsoler
 ## Example
 
 ```ts
-import { Consoler } from '../consoler.js';
+import Consoler from 'xconsoler';
 
 const consoler = new Consoler({
   levels: { log: true, info: true },
