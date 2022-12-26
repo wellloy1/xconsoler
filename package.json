@@ -1,6 +1,6 @@
 {
   "name": "xconsoler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js pretty and fast TTY logger with nice settings",
   "keywords": [
     "console",
