@@ -1,0 +1,32 @@
+{
+	"name": "consoler",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./consoler.js",
+	"author": "",
+	"scripts": {
+		"dev": "nodemon ./example/server.js",
+		"types": "tsc -p types/tsconfig.json"
+	},
+	"license": "ISC",
+	"types": "types/Consoler.d.ts",
+	"files": [
+		"lib/",
+		"example/",
+		"types/"
+	],
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^18.11.7",
+		"@typescript-eslint/eslint-plugin": "^5.41.0",
+		"@typescript-eslint/parser": "^5.41.0",
+		"eslint": "^8.26.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"prettier": "^2.7.1",
+		"typescript": "^4.8.4"
+	},
+	"dependencies": {
+		"sonic-boom": "^3.2.0"
+	}
+}
