@@ -76,6 +76,13 @@ interface LoggerOptions {
 }
 
 type TimeType = 'unix' | 'iso' | 'utc' | 'ls' | 'lts' | 'lds';
+// Explanation:
+// unix - UNIX epoch number
+// iso - ISO string
+// utc - UTC string
+// ls - locale string
+// lts - locale time string
+// lds - locale date string
 
 type logLevelsType = {
   [key: string]: 0 | 1 | true | false;
