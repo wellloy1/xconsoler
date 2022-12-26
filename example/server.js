@@ -9,12 +9,12 @@ const consoler = new Consoler({
 
 const consoler2 = new Consoler({
 	levels: { log: true }, // enables "log" log level only * the other log levels will be a noop function
-	time: false, // disables time output
-	colors: false, // disable ANSI color styles
+	time: 'iso', // disables time output
+	// colors: false, // disable ANSI color styles
 });
 
 const consoler3 = new Consoler({
-	levels: {}, // all the log levels will be a noop functions
+	time: 'lts', // disables time output
 });
 
 let reqId = 0;
@@ -29,13 +29,12 @@ server.on('request', (req, res) => {
 	res.end('Hello');
 });
 
-console.log('Consoler:');
-consoler.log({ reqId });
-consoler.debug({ reqId });
-consoler.info({ reqId });
-consoler.warn({ reqId });
-consoler.error({ reqId });
-consoler.fatal({ reqId });
+consoler.info(`Server has been started`, { port: 3000 });
+consoler.log(`Request completed:`, { reqId, url: '/' });
+consoler.debug(`User`, { id: 1234, name: 'Max' });
+consoler.warn(`MaxListenersExceededWarning: Possible EventEmitter memory leak
+detected`);
+consoler.error(`Failed to connect to database`, { port: 5432 });
 
 console.log('\nConsoler2:');
 consoler2.log({ reqId });
