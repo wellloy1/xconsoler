@@ -14,7 +14,7 @@ Only 'sonic-boom'
 import { Consoler } from '../consoler.js';
 
 const consoler = new Consoler({
-  levels: { log: true }, // enables "log" log level only * the other log levels will be a noop function
+  levels: { log: true }, // enables "log" log level only *  the other log levels will be a noop function
   time: false, // disables time output
   colors: false, // disable ANSI color styles
 });
