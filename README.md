@@ -2,7 +2,7 @@
 
 Node.js pretty and fast TTY logger with nice settings
 
-![screenshot](https://github.com/wellloy1/consoler/example/master/screenshot.jpg?raw=true)
+![screenshot](https://github.com/wellloy1/consoler/example/screenshot.jpg?raw=true)
 
 # Dependencies
 
