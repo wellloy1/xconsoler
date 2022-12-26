@@ -1,6 +1,6 @@
 {
   "name": "xconsoler",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js pretty and fast TTY logger with nice settings",
   "keywords": [
     "console",
@@ -20,7 +20,8 @@
   "files": [
     "lib/",
     "example/",
-    "types/"
+    "types/",
+    "consoler.js"
   ],
   "type": "module",
   "repository": {
