@@ -10,7 +10,7 @@ interface LoggerOptions {
   async?: 0 | 1 | true | false;
 }
 
-export class Consoler {
+export default class Consoler {
   constructor(options: LoggerOptions) {
     this._options = options;
   }

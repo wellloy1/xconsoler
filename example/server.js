@@ -1,20 +1,20 @@
-import { Consoler } from '../consoler.js';
+import Consoler from '../consoler.js';
 import http from 'http';
 
 const consoler = new Consoler({
-	prefix: '[clientService]', // adds prefix string to output
-	// levels: { error: false }, // disables "error" log level * consoler.error will be a noop function
-	// time: 'iso', // time format is an ISO string
+  prefix: '[clientService]', // adds prefix string to output
+  // levels: { error: false }, // disables "error" log level * consoler.error will be a noop function
+  // time: 'iso', // time format is an ISO string
 });
 
 const consoler2 = new Consoler({
-	levels: { log: true }, // enables "log" log level only * the other log levels will be a noop function
-	time: 'iso', // disables time output
-	// colors: false, // disable ANSI color styles
+  levels: { log: true }, // enables "log" log level only * the other log levels will be a noop function
+  time: 'iso', // disables time output
+  // colors: false, // disable ANSI color styles
 });
 
 const consoler3 = new Consoler({
-	time: 'lts', // disables time output
+  time: 'lts', // disables time output
 });
 
 let reqId = 0;
@@ -24,9 +24,9 @@ const server = http.createServer();
 server.listen(3000);
 
 server.on('request', (req, res) => {
-	reqId++;
-	consoler.log({ reqId, url: req.url });
-	res.end('Hello');
+  reqId++;
+  consoler.log({ reqId, url: req.url });
+  res.end('Hello');
 });
 
 consoler.info(`Server has been started`, { port: 3000 });

@@ -1,7 +1,14 @@
 {
-  "name": "consoler",
+  "name": "xconsoler",
   "version": "1.0.0",
   "description": "Node.js pretty and fast TTY logger with nice settings",
+  "keywords": [
+    "console",
+    "cli",
+    "stdout",
+    "logger",
+    "pretty"
+  ],
   "author": "Max Shane <wellloy1@gmail.com>",
   "license": "MIT",
   "main": "./consoler.js",
@@ -9,7 +16,7 @@
     "dev": "nodemon ./example/server.js",
     "types": "tsc -p types/tsconfig.json"
   },
-  "types": "types/Consoler.d.ts",
+  "types": "types/consoler.d.ts",
   "files": [
     "lib/",
     "example/",
