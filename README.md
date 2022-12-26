@@ -6,29 +6,76 @@ Node.js pretty and fast TTY logger with nice settings
 
 # Dependencies
 
-Only 'sonic-boom'
+Only `sonic-boom` (Pino logger uses this)
 
 # Usage
+
+```bash
+npm i consoler-js
+```
+
+## Example
 
 ```ts
 import { Consoler } from '../consoler.js';
 
 const consoler = new Consoler({
-  levels: { log: true }, // enables "log" log level only *  the other log levels will be a noop function
-  time: false, // disables time output
-  colors: false, // disable ANSI color styles
+  levels: { log: true, info: true },
+  // the other log levels will be a noop functions
+  time: 'iso',
+  colors: false,
 });
 ```
 
-```ts
-interface Time {
-  unix(): number; // UNIX epoch
-  iso(unixTime: number): string; // ISO string
-  utc(unixTime: number): string; // UTC string
-  ls(unixTime: number): string; // localeString
-  lts(unixTime: number): string; // localeTimeString
-  lds(unixTime: number): string; // localeDateString
+## Default options:
+
+```js
+{
+	active: true,
+	prefix: null,
+	time: 'ls',
+	levels: {
+		log: true,
+		debug: true,
+		info: true,
+		warn: true,
+		error: true,
+		fatal: true,
+	},
+	colors: true,
+	async: false,
 }
+```
+
+## Options meaning:
+
+`active` - Enables/disables logger output  
+`prefix` - Adds a custom prefix after a log level tag. Example:
+
+```bash
+26.12.2022, 17:51:35 [log] [clientService] Request completed: { reqId: 0, url: '/' }
+```
+
+`time` - Disables time output or changes time output format
+`levels` - With that option, you can include log levels that you want to use or exclude from output.  
+If you add log levels as `true`, that means the other log levels will be excluded. If you added log levels as `false`, all log levels excluding these will be added to the output.  
+`colors` - Enables/disables pretty colors  
+`async` - If true the Consoler will use a `sonic-boom` for TTY output (it's 20% faster). If false - it will use the default `stdout` output.
+
+## Interfaces
+
+The Consoler consumes `LoggerOptions`:
+
+```ts
+interface LoggerOptions {
+  active?: 0 | 1 | true | false;
+  prefix?: string;
+  levels?: logLevelsType;
+  time?: TimeType | null | 0 | false;
+  colors?: 0 | 1 | true | false;
+}
+
+type TimeType = 'unix' | 'iso' | 'utc' | 'ls' | 'lts' | 'lds';
 
 type logLevelsType = {
   [key: string]: 0 | 1 | true | false;
@@ -39,12 +86,4 @@ type logLevelsType = {
   error?: 0 | 1 | true | false;
   fatal?: 0 | 1 | true | false;
 };
-
-interface LoggerOptions {
-  active?: 0 | 1 | true | false;
-  prefix?: string;
-  levels?: logLevelsType;
-  time?: TimeType | null | 0 | false;
-  colors?: 0 | 1 | true | false;
-}
 ```

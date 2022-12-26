@@ -2,7 +2,7 @@ import { Consoler } from '../consoler.js';
 import http from 'http';
 
 const consoler = new Consoler({
-	// prefix: '[clientService]', // adds prefix string to output
+	prefix: '[clientService]', // adds prefix string to output
 	// levels: { error: false }, // disables "error" log level * consoler.error will be a noop function
 	// time: 'iso', // time format is an ISO string
 });
