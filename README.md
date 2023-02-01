@@ -43,6 +43,7 @@ const consoler = new Consoler({
 		fatal: true,
 	},
 	colors: true,
+	timeColor: true,
 	async: false,
 }
 ```
@@ -50,17 +51,23 @@ const consoler = new Consoler({
 ## Options meaning:
 
 `active` - Enables/disables logger output  
-`prefix` - Adds a custom prefix after a log level tag. Example:
+`prefix` - Adds a custom prefix after a log level tag. Example (prefix: '[httpServer]'):
 
 ```bash
-26.12.2022, 17:51:35 [log] [clientService] Request completed: { reqId: 0, url: '/' }
+26.12.2022, 17:51:35 [log] [httpServer] Request completed: { reqId: 0, url: '/' }
 ```
 
 `time` - Disables time output or changes time output format
 `levels` - With that option, you can include log levels that you want to use or exclude from output.  
-If you add log levels as `true`, that means the other log levels will be excluded. If you added log levels as `false`, all log levels excluding these will be added to the output.  
+If you add log levels as 'true', that means the other log levels will be excluded. If you added log levels as 'false', all log levels excluding these will be added to the output.  
 `colors` - Enables/disables pretty colors  
-`async` - If true the Consoler will use a `sonic-boom` for TTY output (it's 20% faster). If false - it will use the default `stdout` output.
+`timeColor` - Enables/disables color for timestring prefix (it works if the 'colors' is 'true')
+`async` - If true the Consoler will use a 'sonic-boom' for TTY output. If false - it will use the default 'stdout' output.
+
+Note:
+
+- Disabling colors increase I/O perfomance
+- Sonic-Boom also increase I/O perfomance
 
 ## Interfaces
 
@@ -73,6 +80,7 @@ interface LoggerOptions {
   levels?: logLevelsType;
   time?: TimeType | null | 0 | false;
   colors?: 0 | 1 | true | false;
+  timeColor?: 0 | 1 | true | false;
 }
 
 type TimeType = 'unix' | 'iso' | 'utc' | 'ls' | 'lts' | 'lds';

@@ -8,6 +8,7 @@ import { DEFAULT_OPTIONS } from './lib/defaultOptions.js';
 import { Time } from './lib/Time.js';
 import { formatter } from './lib/formatter.js';
 import { formatterColored } from './lib/formatterColored.js';
+import { formatterColored2 } from './lib/formatterColored2.js';
 
 import { validateOptions } from './lib/validateOptions.js';
 
@@ -62,7 +63,8 @@ class Consoler {
 
     // Formatter configuration:
     if (this[_options].colors) {
-      this[_formatter] = formatterColored;
+      if (this[_options].timeColor) this[_formatter] = formatterColored;
+      else this[_formatter] = formatterColored2;
     } else {
       this[_formatter] = formatter;
     }
@@ -73,17 +75,36 @@ class Consoler {
     } else {
       this[_stream] = process.stdout;
     }
+
+    // Assign other Node.js console methods
+    this.assert = console.assert;
+    this.clear = console.clear;
+    this.count = console.count;
+    this.countReset = console.countReset;
+    this.dir = console.dir;
+    this.dirxml = console.dirxml;
+    this.group = console.group;
+    this.groupCollapsed = console.groupCollapsed;
+    this.groupEnd = console.groupEnd;
+    this.table = console.table;
+    this.time = console.time;
+    this.timeEnd = console.timeEnd;
+    this.timeLog = console.timeLog;
+    this.trace = console.trace;
+    this.Console = console.Console;
+    this.timeStamp = console.timeStamp;
+    this.profile = console.profile;
+    this.profileEnd = console.profileEnd;
   }
 
   [_print](logLevel, args) {
-    // if (!this[_options].active) return;
+    if (!this[_options].active) return;
 
     let printLine = '';
 
     if (this[_options].time) {
       const timeString = Time[this[_options].time]();
-      // printLine += this[_formatter].time(timeString);
-      printLine += timeString;
+      printLine += this[_formatter].time(timeString);
       printLine += ' ';
     }
 

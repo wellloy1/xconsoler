@@ -7,11 +7,12 @@ interface LoggerOptions {
   levels?: logLevelsType;
   time?: TimeType | null | 0 | false;
   colors?: 0 | 1 | true | false;
+  timeColor?: 0 | 1 | true | false;
   async?: 0 | 1 | true | false;
 }
 
 export default class Consoler {
-  constructor(options: LoggerOptions) {
+  constructor(options?: LoggerOptions) {
     this._options = options;
   }
 
@@ -36,4 +37,9 @@ export default class Consoler {
   timeEnd(...args: any): void;
   timeLog(...args: any): void;
   trace(...args: any): void;
+
+  Console(...args: any): void;
+  timestamp(...args: any): void;
+  profile(...args: any): void;
+  profileEnd(...args: any): void;
 }
