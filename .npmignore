@@ -1,0 +1,16 @@
+node_modules
+meta
+tmp
+
+# Application at-runtime files and dirs
+*.log
+logs
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Editor directories and files
+.vscode
