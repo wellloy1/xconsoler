@@ -15,8 +15,7 @@ const consoler2 = new Consoler({
 });
 
 const consoler3 = new Consoler({
-  time: false, // disables time output
-  
+  time: false, // disables time output  
 });
 
 console.log('- Consoler1:');
